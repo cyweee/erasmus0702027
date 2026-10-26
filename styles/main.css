@@ -189,17 +189,18 @@ a { color: inherit; }
 /* ===== Co se naučíš: аккордеон ===== */
 .accordion { display: flex; flex-direction: column; gap: 1rem; max-width: 920px; }
 
-.acc-item { background: var(--card); border-radius: var(--radius); transition: box-shadow .25s; }
+.acc-item {
+  background: var(--card); border-radius: var(--radius);
+  cursor: pointer; transition: box-shadow .25s;
+}
 .acc-item.open { box-shadow: 0 0 0 2px var(--text); }
 
 .acc-trigger {
   width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
   background: none; border: 0; color: inherit; font: inherit; text-align: left;
-  padding: 1.6rem 2rem; cursor: pointer; border-radius: var(--radius);
+  padding: 1.6rem 2rem .4rem; cursor: pointer; border-radius: var(--radius);
 }
-.acc-head { display: flex; flex-direction: column; gap: .35rem; }
 .acc-title { font-size: 1.5rem; font-weight: 700; color: var(--text-strong); line-height: 1.2; }
-.acc-summary { color: var(--text-card); }
 
 .acc-arrow {
   flex-shrink: 0; width: 44px; height: 44px; padding: 10px;
@@ -207,16 +208,24 @@ a { color: inherit; }
   fill: none; stroke: var(--text-strong); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
   transition: transform .35s ease, background .25s;
 }
-.acc-trigger:hover .acc-arrow { background: rgba(138, 138, 255, .25); }
+.acc-item:hover .acc-arrow { background: rgba(138, 138, 255, .25); }
 .acc-item.open .acc-arrow { transform: rotate(180deg); }
 
-.acc-panel {
-  display: grid; grid-template-rows: 0fr; visibility: hidden;
-  transition: grid-template-rows .35s ease, visibility .35s;
+/* один блок текста: закрыто = 2 строки с затуханием, открыто = весь текст */
+.acc-text-wrap {
+  position: relative; overflow: hidden;
+  margin: 0 2rem 1.6rem;
+  font-size: 1.0625rem; line-height: 1.7;
+  max-height: 3.4em;                      /* 2 строки */
+  transition: max-height .4s ease;
 }
-.acc-item.open .acc-panel { grid-template-rows: 1fr; visibility: visible; }
-.acc-panel-inner { overflow: hidden; }
-.acc-panel-inner p { padding: 0 2rem 1.8rem; color: var(--text-card); max-width: 68ch; }
+.acc-text-wrap::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1.7em;
+  background: linear-gradient(transparent, var(--card));
+  transition: opacity .3s; pointer-events: none;
+}
+.acc-item.open .acc-text-wrap::after { opacity: 0; }
+.acc-text { color: var(--text-card); max-width: 68ch; }
 
 /* cards */
 .card-grid { display: grid; gap: 1.5rem; }
@@ -274,6 +283,13 @@ a { color: inherit; }
 .social a:hover svg { stroke: var(--text-strong); }
 .footer-note { text-align: right; }
 .footer-note strong { color: var(--text-strong); font-weight: 600; }
+
+.prefooter-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 
 /*  mobilni ver  */
 @media (max-width: 820px) {
