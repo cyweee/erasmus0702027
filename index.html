@@ -14,8 +14,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#uvod" aria-label="SOŠ a SOU Neratovice – úvod">
-        <!-- TODO: sem později vložíme logo školy (img/logo-skoly.png) -->
-        <span class="brand-mark" aria-hidden="true">IT</span>
+        <img src="assets/img/pre-footer&footer/sosasoulogo.png" alt="[logo_sos_a_sou _nera]" class="brand-logo" style="height: 55px; width: auto; margin-right: 15px;">        
         <span class="brand-text">SOŠ a SOU Neratovice</span>
       </a>
 
@@ -38,86 +37,40 @@
 
     <!-- ÚVOD -->
     <section id="uvod" class="hero">
-      <div class="container">
+      <div class="container hero-layout">
         <div class="hero-text">
           <p class="hero-school">SOŠ a SOU Neratovice</p>
           <h1>Informační technologie</h1>
-          <p class="hero-slogan">Tvoř věci, které fungují.</p>
+          <p class="hero-slogan">Staň se tvůrcem své digitální reality.</p>
           <a class="btn" href="#co-se-naucis">Prozkoumat obor</a>
         </div>
 
-        <!-- Dekorativní okna: editor s kódem v C a terminál se switchem -->
+        <!-- Dekorativní okno: editor s kódem v C++ -->
         <div class="hero-windows" aria-hidden="true">
           <div class="window ide">
             <div class="win-bar">
               <span class="dots"><i></i><i></i><i></i></span>
-              <span class="win-title">lichecifry.c</span>
+              <span class="win-title">prijimacky.cpp</span>
             </div>
-            <div class="ide-tabs"><span class="tab active">lichecifry.c</span><span class="tab">main.h</span></div>
+            <div class="ide-tabs"><span class="tab active">prijimacky.cpp</span></div>
             <code class="win-code">
-            <span class="line"><span class="t-pre">#include</span> <span class="t-str">&lt;stdio.h&gt;</span></span>
+            <span class="line"><span class="t-pre">#include</span> <span class="t-str">&lt;iostream&gt;</span></span>
+            <span class="line"><span class="t-kw">using namespace</span> <span class="t-ty">std</span>;</span>
             <span class="line"></span>
             <span class="line"><span class="t-ty">int</span> <span class="t-fn">main</span>() {</span>
-            <span class="line">    <span class="t-ty">int</span> cislo;</span>
-            <span class="line">    <span class="t-ty">int</span> pocet_lichych = <span class="t-num">0</span>;</span>
-            <span class="line">    <span class="t-ty">int</span> cifra;</span>
+            <span class="line">    <span class="t-ty">int</span> znamka = <span class="t-num">1</span>; <span class="t-dim">// Tvůj průměr</span></span>
             <span class="line"></span>
-            <span class="line">    <span class="t-fn">printf</span>(<span class="t-str">"cislo na vstup: </span><span class="t-num">\n</span><span class="t-str">"</span>);</span>
-            <span class="line">    <span class="t-fn">scanf</span>(<span class="t-str">"%d"</span>, &amp;cislo);</span>
-            <span class="line"></span>
-            <span class="line">    <span class="t-kw">if</span> (cislo &lt; <span class="t-num">0</span>) {</span>
-            <span class="line">        cislo = -cislo;</span>
+            <span class="line">    <span class="t-kw">if</span> (znamka &lt;= <span class="t-num">2</span>) {</span>
+            <span class="line">        <span class="t-ty">cout</span> &lt;&lt; <span class="t-str">"Dal jsi uspesne prijimacky!"</span> &lt;&lt; <span class="t-ty">endl</span>;</span>
+            <span class="line">        <span class="t-ty">cout</span> &lt;&lt; <span class="t-str">"Vitame u nas na skole."</span> &lt;&lt; <span class="t-ty">endl</span>;</span>
+            <span class="line">    } <span class="t-kw">else</span> {</span>
+            <span class="line">        <span class="t-ty">cout</span> &lt;&lt; <span class="t-str">"Bohuzel to nevyslo, zkus to priste."</span> &lt;&lt; <span class="t-ty">endl</span>;</span>
             <span class="line">    }</span>
-            <span class="line"></span>
-            <span class="line">    <span class="t-kw">do</span> {</span>
-            <span class="line">        cifra = cislo % <span class="t-num">10</span>;</span>
-            <span class="line">        <span class="t-kw">if</span> (cifra % <span class="t-num">2</span> != <span class="t-num">0</span>) {</span>
-            <span class="line">            pocet_lichych++;</span>
-            <span class="line">        }</span>
-            <span class="line">        cislo = cislo / <span class="t-num">10</span>;</span>
-            <span class="line">    } <span class="t-kw">while</span> (cislo != <span class="t-num">0</span>);</span>
-            <span class="line"></span>
-            <span class="line">    <span class="t-fn">printf</span>(<span class="t-str">"pocet lichych cifer = %d</span><span class="t-num">\n</span><span class="t-str">"</span>, pocet_lichych);</span>
             <span class="line"></span>
             <span class="line">    <span class="t-kw">return</span> <span class="t-num">0</span>;</span>
             <span class="line">}</span>
             </code>
-            <div class="status"><span>C</span><span>UTF-8</span><span>Ln 12, Sl 5</span></div>
-          </div>
-
-          <div class="window term">
-            <div class="win-bar">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="win-title">Terminál – switch SW1</span>
-            </div>
-            <code class="win-code">
-            <span class="line"><span class="t-prompt">Switch&gt;</span> <span class="t-kw">enable</span></span>
-            <span class="line"><span class="t-prompt">Switch#</span> <span class="t-kw">configure</span> <span class="t-kw">terminal</span></span>
-            <span class="line"><span class="t-prompt">Switch(config)#</span> <span class="t-kw">hostname</span> SW1</span>
-            <span class="line"><span class="t-prompt">SW1(config)#</span> <span class="t-kw">vlan</span> <span class="t-num">10</span></span>
-            <span class="line"><span class="t-prompt">SW1(config-vlan)#</span> <span class="t-kw">name</span> ZACI</span>
-            <span class="line"><span class="t-prompt">SW1(config-vlan)#</span> <span class="t-kw">exit</span></span>
-            <span class="line"><span class="t-prompt">SW1(config)#</span> <span class="t-kw">interface</span> <span class="t-num">fa0/1</span></span>
-            <span class="line"><span class="t-prompt">SW1(config-if)#</span> <span class="t-kw">description</span> PC-UCEBNA</span>
-            <span class="line"><span class="t-prompt">SW1(config-if)#</span> <span class="t-kw">switchport</span> <span class="t-kw">mode</span> <span class="t-kw">access</span></span>
-            <span class="line"><span class="t-prompt">SW1(config-if)#</span> <span class="t-kw">switchport</span> <span class="t-kw">access</span> <span class="t-kw">vlan</span> <span class="t-num">10</span></span>
-            <span class="line"><span class="t-prompt">SW1(config-if)#</span> <span class="t-kw">no</span> <span class="t-kw">shutdown</span></span>
-            <span class="line"><span class="t-prompt">SW1(config-if)#</span> <span class="t-kw">exit</span></span>
-            <span class="line"><span class="t-prompt">SW1(config)#</span> <span class="t-kw">interface</span> <span class="t-kw">range</span> <span class="t-num">fa0/23</span> - <span class="t-num">24</span></span>
-            <span class="line"><span class="t-prompt">SW1(config-if-range)#</span> <span class="t-kw">switchport</span> <span class="t-kw">mode</span> <span class="t-kw">trunk</span></span>
-            <span class="line"><span class="t-prompt">SW1(config-if-range)#</span> <span class="t-kw">exit</span></span>
-            <span class="line"><span class="t-prompt">SW1(config)#</span> <span class="t-kw">interface</span> <span class="t-kw">vlan</span> <span class="t-num">10</span></span>
-            <span class="line"><span class="t-prompt">SW1(config-if)#</span> <span class="t-kw">ip</span> <span class="t-kw">address</span> <span class="t-num">192.168.10.2</span> <span class="t-num">255.255.255.0</span></span>
-            <span class="line"><span class="t-prompt">SW1(config-if)#</span> <span class="t-kw">exit</span></span>
-            <span class="line"><span class="t-prompt">SW1(config)#</span> <span class="t-kw">line</span> <span class="t-kw">vty</span> <span class="t-num">0</span> <span class="t-num">4</span></span>
-            <span class="line"><span class="t-prompt">SW1(config-line)#</span> <span class="t-kw">transport</span> <span class="t-kw">input</span> <span class="t-kw">ssh</span></span>
-            <span class="line"><span class="t-prompt">SW1(config-line)#</span> <span class="t-kw">exit</span></span>
-            <span class="line"><span class="t-prompt">SW1(config)#</span> <span class="t-kw">end</span></span>
-            <span class="line"><span class="t-prompt">SW1#</span> <span class="t-kw">copy</span> <span class="t-kw">running-config</span> <span class="t-kw">startup-config</span></span>
-            <span class="line"><span class="t-prompt">SW1#</span> <span class="t-kw">show</span> <span class="t-kw">vlan</span> <span class="t-kw">brief</span></span>
-            <span class="line"><span class="t-prompt">SW1#</span><span class="cursor"></span></span>
-            </code>
-            <div class="status"><span>SSH</span><span>9600 8N1</span><span>Připojeno</span></div>
+            <div class="status"><span>C++</span><span>UTF-8</span><span>Ln 14, Sl 1</span></div>
           </div>
         </div>
       </div>
@@ -129,22 +82,73 @@
         <h2>Co se naučíš</h2>
         <p class="section-lead">Čtyři oblasti, kterým se v oboru budeš věnovat.</p>
 
-        <div class="card-grid card-grid-4">
-          <article class="card">
-            <h3>Programování</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+        <div class="accordion">
+          <article class="acc-item open">
+            <h3>
+              <button class="acc-trigger" type="button" id="acc-btn-1" aria-expanded="true" aria-controls="acc-panel-1">
+                <span class="acc-head">
+                  <span class="acc-title">Programování</span>
+                  <span class="acc-summary">Naučíš se psát programy, které něco opravdu dělají.</span>
+                </span>
+                <svg class="acc-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-panel-1" role="region" aria-labelledby="acc-btn-1">
+              <div class="acc-panel-inner">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <h3>Počítačové sítě</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+
+          <article class="acc-item">
+            <h3>
+              <button class="acc-trigger" type="button" id="acc-btn-2" aria-expanded="false" aria-controls="acc-panel-2">
+                <span class="acc-head">
+                  <span class="acc-title">Počítačové sítě</span>
+                  <span class="acc-summary">Pochopíš, jak se spolu počítače dorozumívají.</span>
+                </span>
+                <svg class="acc-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-panel-2" role="region" aria-labelledby="acc-btn-2">
+              <div class="acc-panel-inner">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <h3>Hardware</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+
+          <article class="acc-item">
+            <h3>
+              <button class="acc-trigger" type="button" id="acc-btn-3" aria-expanded="false" aria-controls="acc-panel-3">
+                <span class="acc-head">
+                  <span class="acc-title">Hardware</span>
+                  <span class="acc-summary">Poznáš, z čeho se počítač skládá a jak ho opravit.</span>
+                </span>
+                <svg class="acc-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-panel-3" role="region" aria-labelledby="acc-btn-3">
+              <div class="acc-panel-inner">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <h3>Tvorba webů</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+
+          <article class="acc-item">
+            <h3>
+              <button class="acc-trigger" type="button" id="acc-btn-4" aria-expanded="false" aria-controls="acc-panel-4">
+                <span class="acc-head">
+                  <span class="acc-title">Tvorba webů</span>
+                  <span class="acc-summary">Vytvoříš stránky, které si lidé rádi prohlédnou.</span>
+                </span>
+                <svg class="acc-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-panel-4" role="region" aria-labelledby="acc-btn-4">
+              <div class="acc-panel-inner">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -223,7 +227,6 @@
 
   <footer class="site-footer">
     <div class="container footer-columns">
-      <!-- TODO: odkazy upravíme na konkrétní stránky školy -->
       <nav aria-label="Škola">
         <h2>Škola</h2>
         <ul>
@@ -268,7 +271,6 @@
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
         <ul class="social" aria-label="Sociální sítě školy">
-          <!-- TODO: nahradit odkazy na skutečné profily školy -->
           <li>
             <a href="https://www.sosasou.cz" target="_blank" rel="noopener" aria-label="Facebook školy">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M15.5 21v-7h2.3l.4-2.8h-2.7V9.5c0-.8.3-1.4 1.4-1.4h1.4V5.6c-.3 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.6v2.1H10.4V14h2.3v7"/></svg>

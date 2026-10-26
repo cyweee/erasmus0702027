@@ -1,3 +1,26 @@
+// Аккордеон "Co se naučíš": otevřená je vždy jen jedna karta
+const accItems = document.querySelectorAll('.acc-item');
+
+accItems.forEach(item => {
+  const trigger = item.querySelector('.acc-trigger');
+
+  trigger.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+
+    // nejdřív zavřít všechny karty
+    accItems.forEach(other => {
+      other.classList.remove('open');
+      other.querySelector('.acc-trigger').setAttribute('aria-expanded', 'false');
+    });
+
+    // a kliknutou otevřít (pokud byla už otevřená, zůstane zavřená)
+    if (!wasOpen) {
+      item.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
 // Mobilní menu: otevření / zavření tlačítkem
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.main-nav');
