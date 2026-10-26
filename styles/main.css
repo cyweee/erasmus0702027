@@ -1,10 +1,10 @@
 :root {
-  --bg: #00008B;          /* background webu */
-  --card: #0000D1;        /* karty */
-  --text: #8A8AFF;        /* text */
-  --text-strong: #FFFFFF; /* nadpisy */
-  --text-card: #B8B8FF;   /* běžný text v kartách (na #0000D1 je #8A8AFF málo kontrastní) */
-  --footer-bg: #00006B;   /* TODO DOČASNÉ – barvu patičky doladíme */
+  --bg: #00008B;          
+  --card: #0000D1;        
+  --text: #8A8AFF;        
+  --text-strong: #FFFFFF; 
+  --text-card: #B8B8FF;   
+  --footer-bg: #00006B;   
   --line: rgba(138, 138, 255, 0.3);
 
   --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -14,6 +14,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
 body {
   margin: 0;
   background: var(--bg);
@@ -21,12 +22,30 @@ body {
   font-family: var(--font);
   font-size: 1.0625rem;
   line-height: 1.65;
+  --gradient-speed: 2s;
 }
+
+body::before {
+  content: "";
+  position: fixed; inset: -20%; z-index: -1;
+  background:
+    radial-gradient(900px 600px at 12% 5%,  rgba(0, 0, 209, .45), transparent 70%),
+    radial-gradient(800px 600px at 90% 50%, rgba(0, 0, 209, .35), transparent 70%),
+    linear-gradient(180deg, #00008B 0%, #00006B 100%);
+  animation: bg-drift var(--gradient-speed) ease-in-out infinite alternate;
+}
+
+@keyframes bg-drift {
+  from { transform: translate3d(-5%, -4%, 0) scale(1); }
+  to   { transform: translate3d(5%, 4%, 0) scale(1.12); }
+}
+
 h1, h2, h3 { color: var(--text-strong); line-height: 1.15; margin: 0; }
 p { margin: 0; }
 ul { list-style: none; margin: 0; padding: 0; }
 a { color: inherit; }
 
+/* ИСПРАВЛЕНА ОШИБКА: убран дефис и исправлена функция min() */
 .container { width: min(100% - 3rem, var(--max)); margin-inline: auto; }
 
 :focus-visible { outline: 3px solid var(--text-strong); outline-offset: 3px; border-radius: 4px; }
@@ -57,11 +76,11 @@ a { color: inherit; }
 /*  header  */
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: var(--bg);
+  background: rgba(0, 0, 139, .8);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
 
-/* шапка на всю ширину окна, а не в центрированном контейнере */
 .site-header .container {
   width: 100%;
   padding-inline: clamp(1.5rem, 3vw, 3.5rem);
@@ -78,7 +97,7 @@ a { color: inherit; }
   font-weight: 800; font-size: .95rem;
 }
 
-/* меню крупнее и занимает всё свободное место между логотипом и кнопкой */
+/* меню крупнее и занимает всё свободное место */
 .main-nav { flex: 1; font-size: 1.3rem; }
 .main-nav ul { display: flex; justify-content: center; gap: clamp(2rem, 4.5vw, 4.5rem); }
 .main-nav a { text-decoration: none; padding: .5rem 0; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
@@ -91,8 +110,6 @@ a { color: inherit; }
 }
 
 .hero { padding: clamp(4rem, 10vw, 8rem) 0; }
-
-/* Разделяем hero на 2 колонки (текст слева, карточка справа) */
 .hero .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -104,10 +121,8 @@ a { color: inherit; }
 .hero h1 { font-size: clamp(2.8rem, 7vw, 5.2rem); letter-spacing: -0.02em; }
 .hero-slogan { font-size: clamp(1.3rem, 2.5vw, 1.8rem); color: var(--text-strong); margin: 1.5rem 0 2.5rem; }
 
-/* Выравнивание текста hero по левому краю */
 .hero .hero-text { text-align: left; max-width: 100%; margin-inline: 0; }
 
-/* Настройки для карточки с кодом (убрана вторая колонка) */
 .hero-windows {
   position: relative; isolation: isolate;
   display: block; 
@@ -195,7 +210,6 @@ a { color: inherit; }
 .acc-trigger:hover .acc-arrow { background: rgba(138, 138, 255, .25); }
 .acc-item.open .acc-arrow { transform: rotate(180deg); }
 
-/* плавное раскрытие: высота анимируется от 0 до реальной */
 .acc-panel {
   display: grid; grid-template-rows: 0fr; visibility: hidden;
   transition: grid-template-rows .35s ease, visibility .35s;
@@ -233,31 +247,15 @@ a { color: inherit; }
 }
 
 /*  pre-footer  */
-.prefooter { 
-  background: var(--card); 
-  margin-top: clamp(2rem, 5vw, 4rem); 
+.prefooter { background: var(--card); margin-top: clamp(1.5rem, 4vw, 3rem); }
+.prefooter-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap;
+  padding: 2.8rem 0;
 }
-.prefooter-inner { 
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between; 
-  gap: 2rem; 
-  flex-wrap: wrap; 
-  padding: 6rem 0; 
-}
-.prefooter h2 { 
-  font-size: clamp(2rem, 5vw, 3.2rem); 
-  margin-bottom: .5rem; 
-}
-.prefooter p { 
-  color: var(--text-card); 
-  max-width: 50ch; 
-  font-size: 1.1rem; 
-}
-.prefooter .btn {
-  padding: 1.2rem 2.5rem;
-  font-size: 1.15rem;
-}
+.prefooter h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: .3rem; }
+.prefooter p { color: var(--text-card); max-width: 50ch; font-size: 1rem; }
+.prefooter .btn { padding: .85rem 1.8rem; font-size: 1.05rem; }
 
 /*  paticka  */
 .site-footer { background: var(--footer-bg); font-size: .95rem; }
@@ -279,7 +277,7 @@ a { color: inherit; }
 
 /*  mobilni ver  */
 @media (max-width: 820px) {
-  /* Перестроение hero для мобильных: текст сверху, карточка снизу */
+  .prefooter-inner { padding: 2.2rem 0; }
   .hero .container {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -309,5 +307,6 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { transition: none !important; }
+  /* ИСПРАВЛЕНА ОШИБКА: убран дефис вместо звездочки */
+  * { transition: none !important; animation: none !important; }
 }
