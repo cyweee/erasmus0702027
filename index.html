@@ -7,6 +7,7 @@
   <meta name="description" content="Studentský projekt: představení oboru Informační technologie na SOŠ a SOU Neratovice.">
   <link rel="stylesheet" href="styles/main.css">
   <script src="animation/main.js" defer></script>
+  <script src="animation/vitamescript.js" defer></script> <!-- skript pro python ide -->
 </head>
 <body>
   <a class="skip-link" href="#obsah">Přeskočit na obsah</a>
@@ -35,7 +36,7 @@
 
   <main id="obsah">
 
-    <!-- ÚVOD -->
+    <!-- 1. uvod -->
     <section id="uvod" class="hero">
       <div class="container hero-layout">
         <div class="hero-text">
@@ -45,38 +46,53 @@
           <a class="btn" href="#co-se-naucis">Prozkoumat obor</a>
         </div>
 
-        <!-- Dekorativní okno: editor s kódem v C++ -->
-        <div class="hero-windows" aria-hidden="true">
-          <div class="window ide">
+        <!-- python ide -->
+        <div class="hero-windows">
+          <div class="window ide" role="group" aria-label="Ukázka programu v Pythonu">
             <div class="win-bar">
               <span class="dots"><i></i><i></i><i></i></span>
-              <span class="win-title">prijimacky.cpp</span>
+              <span class="win-title">skola.py</span>
             </div>
-            <div class="ide-tabs"><span class="tab active">prijimacky.cpp</span></div>
-            <code class="win-code">
-            <span class="line"><span class="t-pre">#include</span> <span class="t-str">&lt;iostream&gt;</span></span>
-            <span class="line"><span class="t-kw">using namespace</span> <span class="t-ty">std</span>;</span>
-            <span class="line"></span>
-            <span class="line"><span class="t-ty">int</span> <span class="t-fn">main</span>() {</span>
-            <span class="line">    <span class="t-ty">int</span> znamka = <span class="t-num">1</span>; <span class="t-dim">// Tvůj průměr</span></span>
-            <span class="line"></span>
-            <span class="line">    <span class="t-kw">if</span> (znamka &lt;= <span class="t-num">2</span>) {</span>
-            <span class="line">        <span class="t-ty">cout</span> &lt;&lt; <span class="t-str">"Dal jsi uspesne prijimacky!"</span> &lt;&lt; <span class="t-ty">endl</span>;</span>
-            <span class="line">        <span class="t-ty">cout</span> &lt;&lt; <span class="t-str">"Vitame u nas na skole."</span> &lt;&lt; <span class="t-ty">endl</span>;</span>
-            <span class="line">    } <span class="t-kw">else</span> {</span>
-            <span class="line">        <span class="t-ty">cout</span> &lt;&lt; <span class="t-str">"Bohuzel to nevyslo, zkus to priste."</span> &lt;&lt; <span class="t-ty">endl</span>;</span>
-            <span class="line">    }</span>
-            <span class="line"></span>
-            <span class="line">    <span class="t-kw">return</span> <span class="t-num">0</span>;</span>
-            <span class="line">}</span>
+            
+            <div class="ide-tabs">
+              <span class="tab active">skola.py</span>
+              <button class="run-btn" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>
+                Spustit
+              </button>
+            </div>
+            
+            <code class="win-code" aria-hidden="true">
+              <span class="line"><span class="t-kw">import</span> konfety</span>
+              <span class="line"></span>
+              <span class="line"><span class="t-kw">class</span> <span class="t-ty">Student</span>:</span>
+              <span class="line">    <span class="t-kw">def</span> <span class="t-fn">__init__</span>(self):</span>
+              <span class="line">        self.umi = []</span>
+              <span class="line"></span>
+              <span class="line">    <span class="t-kw">def</span> <span class="t-fn">naucit_se</span>(self, oblast):</span>
+              <span class="line">        self.umi.<span class="t-fn">append</span>(oblast)</span>
+              <span class="line">        <span class="t-fn">print</span>(<span class="t-str">"+"</span>, oblast)</span>
+              <span class="line"></span>
+              <span class="line">ty = <span class="t-ty">Student</span>()</span>
+              <span class="line"><span class="t-kw">for</span> o <span class="t-kw">in</span> [<span class="t-str">"Programovani"</span>, <span class="t-str">"Site"</span>, <span class="t-str">"Operační Systemy"</span>, <span class="t-str">"Hardware"</span>]:</span>
+              <span class="line">    ty.<span class="t-fn">naucit_se</span>(o)</span>
+              <span class="line"></span>
+              <span class="line"><span class="t-kw">if</span> <span class="t-fn">len</span>(ty.umi) == <span class="t-num">4</span>:</span>
+              <span class="line">    konfety.<span class="t-fn">vystrel</span>()  <span class="t-dim"># letí konfety</span></span>
+              <span class="line">    <span class="t-fn">print</span>(<span class="t-str">"Vitame u nas na skole!!!"</span>)</span>
             </code>
-            <div class="status"><span>C++</span><span>UTF-8</span><span>Ln 14, Sl 1</span></div>
+            
+            <div class="console" role="status" aria-live="polite">
+              <span class="out-hint">Klikni na „Spustit“ a uvidíš výsledek.</span>
+            </div>
+            
+            <div class="status"><span>Python 3.12</span><span>UTF-8</span><span>Ln 10, Sl 1</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CO SE NAUČÍŠ -->
+    <!-- 2. co se naucis -->
     <section id="co-se-naucis" class="section">
       <div class="container">
         <h2>Co se naučíš</h2>
@@ -84,106 +100,107 @@
 
         <div class="accordion">
 
-  <article class="acc-item">
-    <h3>
-      <button class="acc-trigger" type="button" id="acc-btn-1" aria-expanded="false" aria-controls="acc-text-1">
-        <span class="acc-title">Programování</span>
-        <svg class="acc-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-    </h3>
-    <div class="acc-text-wrap">
-      <p class="acc-text" id="acc-text-1">Naučíš se vytvářet vlastní programy a aplikace, pracovat s různými programovacími jazyky a přemýšlet nad problémy logicky. Seznámíš se s algoritmy, proměnnými, podmínkami, cykly, funkcemi a základy objektově orientovaného programování. Naučíš se programovat v jazyce Python a získáš základy jazyků C a C++. Vyzkoušíš si také tvorbu desktopových aplikací v C++ pomocí frameworku Qt. Postupně se dostaneš také k tvorbě webových stránek pomocí HTML a CSS a k práci s databázemi a jazykem SQL. Získané znalosti využiješ při vývoji softwaru i při vytváření vlastních projektů.</p>
-    </div>
-  </article>
+          <article class="acc-item">
+            <h3>
+              <button class="acc-trigger" type="button" id="acc-btn-1" aria-expanded="false" aria-controls="acc-text-1">
+                <span class="acc-title">Programování</span>
+                <svg class="acc-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="acc-text-wrap">
+              <p class="acc-text" id="acc-text-1">Naučíš se vytvářet vlastní programy a aplikace, pracovat s různými programovacími jazyky a přemýšlet nad problémy logicky. Seznámíš se s algoritmy, proměnnými, podmínkami, cykly, funkcemi a základy objektově orientovaného programování. Naučíš se programovat v jazyce Python a získáš základy jazyků C a C++. Vyzkoušíš si také tvorbu desktopových aplikací v C++ pomocí frameworku Qt. Postupně se dostaneš také k tvorbě webových stránek pomocí HTML a CSS a k práci s databázemi a jazykem SQL. Získané znalosti využiješ při vývoji softwaru i při vytváření vlastních projektů.</p>
+            </div>
+          </article>
 
-  <article class="acc-item">
-    <h3>
-      <button class="acc-trigger" type="button" id="acc-btn-2" aria-expanded="false" aria-controls="acc-text-2">
-        <span class="acc-title">Počítačové sítě</span>
-        <svg class="acc-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-    </h3>
-    <div class="acc-text-wrap">
-      <p class="acc-text" id="acc-text-2">Pochopíš, jak spolu počítače a další zařízení komunikují a jak funguje přenos dat v místní síti i na internetu. Naučíš se pracovat s IPv4 a IPv6 adresami, nastavovat síťová zařízení a konfigurovat routery a switche. Seznámíš se se směrováním, VLAN, bezdrátovými sítěmi a síťovými službami, jako jsou DHCP a DNS. Pomocí programu Cisco Packet Tracer si budeš moci navrhovat a simulovat vlastní síťová řešení. Součástí výuky bude také zabezpečení sítí, diagnostika problémů a hledání jejich příčin.</p>
-    </div>
-  </article>
+          <article class="acc-item">
+            <h3>
+              <button class="acc-trigger" type="button" id="acc-btn-2" aria-expanded="false" aria-controls="acc-text-2">
+                <span class="acc-title">Počítačové sítě</span>
+                <svg class="acc-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="acc-text-wrap">
+              <p class="acc-text" id="acc-text-2">Pochopíš, jak spolu počítače a další zařízení komunikují a jak funguje přenos dat v místní síti i na internetu. Naučíš se pracovat s IPv4 a IPv6 adresami, nastavovat síťová zařízení a konfigurovat routery a switche. Seznámíš se se směrováním, VLAN, bezdrátovými sítěmi a síťovými službami, jako jsou DHCP a DNS. Pomocí programu Cisco Packet Tracer si budeš moci navrhovat a simulovat vlastní síťová řešení. Součástí výuky bude také zabezpečení sítí, diagnostika problémů a hledání jejich příčin.</p>
+            </div>
+          </article>
 
-  <article class="acc-item">
-    <h3>
-      <button class="acc-trigger" type="button" id="acc-btn-3" aria-expanded="false" aria-controls="acc-text-3">
-        <span class="acc-title">Operační systémy</span>
-        <svg class="acc-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-    </h3>
-    <div class="acc-text-wrap">
-      <p class="acc-text" id="acc-text-3">Poznáš, jak fungují operační systémy a jakým způsobem zajišťují komunikaci mezi hardwarem a softwarem. Naučíš se pracovat se systémy Windows a Linux, instalovat a nastavovat software a spravovat systémové prostředky. Seznámíš se také se správou uživatelských účtů, oprávnění a systémových služeb. V dalších částech studia se budeš věnovat také serverovým systémům Windows a Linux a jejich konfiguraci. Díky tomu získáš základy potřebné pro správu počítačů a serverů.</p>
-    </div>
-  </article>
+          <article class="acc-item">
+            <h3>
+              <button class="acc-trigger" type="button" id="acc-btn-3" aria-expanded="false" aria-controls="acc-text-3">
+                <span class="acc-title">Operační systémy</span>
+                <svg class="acc-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="acc-text-wrap">
+              <p class="acc-text" id="acc-text-3">Poznáš, jak fungují operační systémy a jakým způsobem zajišťují komunikaci mezi hardwarem a softwarem. Naučíš se pracovat se systémy Windows a Linux, instalovat a nastavovat software a spravovat systémové prostředky. Seznámíš se také se správou uživatelských účtů, oprávnění a systémových služeb. V dalších částech studia se budeš věnovat také serverovým systémům Windows a Linux a jejich konfiguraci. Díky tomu získáš základy potřebné pro správu počítačů a serverů.</p>
+            </div>
+          </article>
 
-  <article class="acc-item">
-    <h3>
-      <button class="acc-trigger" type="button" id="acc-btn-4" aria-expanded="false" aria-controls="acc-text-4">
-        <span class="acc-title">Hardware</span>
-        <svg class="acc-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-    </h3>
-    <div class="acc-text-wrap">
-      <p class="acc-text" id="acc-text-4">Zjistíš, z jakých součástí se počítač skládá a jak jednotlivé komponenty spolupracují. Naučíš se rozpoznávat procesory, základní desky, operační paměti, úložiště a další důležité části počítače. Seznámíš se s jejich funkcemi, parametry a možnostmi využití. Pochopíš také základní principy fungování BIOSu a UEFI a jednotlivých hardwarových rozhraní. Získané znalosti ti pomohou lépe porozumět počítačové technice, orientovat se při výběru komponent a řešit běžné technické problémy.</p>
-    </div>
-  </article>
+          <article class="acc-item">
+            <h3>
+              <button class="acc-trigger" type="button" id="acc-btn-4" aria-expanded="false" aria-controls="acc-text-4">
+                <span class="acc-title">Hardware</span>
+                <svg class="acc-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+            </h3>
+            <div class="acc-text-wrap">
+              <p class="acc-text" id="acc-text-4">Zjistíš, z jakých součástí se počítač skládá a jak jednotlivé komponenty spolupracují. Naučíš se rozpoznávat procesory, základní desky, operační paměti, úložiště a další důležité části počítače. Seznámíš se s jejich funkcemi, parametry a možnostmi využití. Pochopíš také základní principy fungování BIOSu a UEFI a jednotlivých hardwarových rozhraní. Získané znalosti ti pomohou lépe porozumět počítačové technice, orientovat se při výběru komponent a řešit běžné technické problémy.</p>
+            </div>
+          </article>
 
-</div>
+        </div>
+      </div>
     </section>
 
-<!-- UKÁZKY STUDENTSKÉ TVORBY -->
-<section id="ukazky" class="section">
-<div class="container">
-<h2>Soutěže a úspěchy</h2>
-<p class="section-lead">Kde si naši studenti zkoušejí své znalosti v praxi.</p>
+    <!-- 3. ?? to co delame ve skole ?? -->
+    <section id="ukazky" class="section">
+      <div class="container">
+        <h2>Soutěže a úspěchy</h2>
+        <p class="section-lead">Kde si naši studenti zkoušejí své znalosti v praxi.</p>
 
-<div class="card-grid card-grid-3">
+        <div class="card-grid card-grid-3">
 
-<article class="card card-project">
-<picture>
-  <source srcset="assets/img/body/troubleshoot.png" type="image/webp">
-  <img src="assets/img/body/troubleshoot.png"
-       alt="[troubleshootDay]"
-       class="project-photo" width="1200" height="675" loading="lazy">
-</picture>
-<h3>Troubleshoot Day</h3>
-<span class="tag">3. místo v roce 2026</span>
-<p>Naše škola se již druhým rokem po sobě účastní soutěže Troubleshoot Day, zaměřené na počítačové sítě a síťovou bezpečnost. Studenti zde řeší praktické úlohy inspirované reálnými situacemi z IT praxe. V roce 2026 se jim podařilo získat skvělé 3. místo v konkurenci středních škol z celé České republiky.</p>
-</article>
+          <article class="card card-project">
+            <picture>
+              <source srcset="assets/img/body/troubleshoot.png" type="image/webp">
+              <img src="assets/img/body/troubleshoot.png"
+                   alt="[troubleshootDay]"
+                   class="project-photo" width="1200" height="675" loading="lazy">
+            </picture>
+            <h3>Troubleshoot Day</h3>
+            <span class="tag">3. místo v roce 2026</span>
+            <p>Naše škola se již druhým rokem po sobě účastní soutěže Troubleshoot Day, zaměřené na počítačové sítě a síťovou bezpečnost. Studenti zde řeší praktické úlohy inspirované reálnými situacemi z IT praxe. V roce 2026 se jim podařilo získat skvělé 3. místo v konkurenci středních škol z celé České republiky.</p>
+          </article>
 
-<article class="card card-project">
-<picture>
-  <source srcset="assets/img/body/skirmish14122025.webp" type="image/webp">
-  <img src="assets/img/body/skirmish14122025.webp"
-       alt="[haxagon_skirmish2025]"
-       class="project-photo" width="1200" height="675" loading="lazy">
-</picture>
-<h3>HAXAGON Skirmish</h3>
-<span class="tag">7. místo v ČR v roce 2026</span>
-<p>Naši studenti pravidelně poměřují své znalosti také v soutěži HAXAGON Skirmish, která rozvíjí dovednosti v oblasti informačních technologií a kybernetické bezpečnosti. V roce 2025 škola získala 2. místo mezi středními školami Středočeského kraje. V roce 2026 navázala dalším úspěchem – obsadila 7. místo v celostátním pořadí a 3. místo v kraji.</p>
-</article>
+          <article class="card card-project">
+            <picture>
+              <source srcset="assets/img/body/skirmish14122025.webp" type="image/webp">
+              <img src="assets/img/body/skirmish14122025.webp"
+                   alt="[haxagon_skirmish2025]"
+                   class="project-photo" width="1200" height="675" loading="lazy">
+            </picture>
+            <h3>HAXAGON Skirmish</h3>
+            <span class="tag">7. místo v ČR v roce 2026</span>
+            <p>Naši studenti pravidelně poměřují své znalosti také v soutěži HAXAGON Skirmish, která rozvíjí dovednosti v oblasti informačních technologií a kybernetické bezpečnosti. V roce 2025 škola získala 2. místo mezi středními školami Středočeského kraje. V roce 2026 navázala dalším úspěchem – obsadila 7. místo v celostátním pořadí a 3. místo v kraji.</p>
+          </article>
 
-<article class="card card-project">
-<picture>
-  <source srcset="assets/img/body/ccna.png" type="image/webp">
-  <img src="assets/img/body/ccna.png"
-       alt="[ccna_photo_from_school]"
-       class="project-photo" width="1200" height="675" loading="lazy">
-</picture>
-<h3>Cisco Networking Academy</h3>
-<span class="tag">Odborné certifikace CCNA</span>
-<p>Studentům nabízíme možnost rozvíjet své znalosti počítačových sítí prostřednictvím kurzů Cisco Networking Academy. Věnují se konfiguraci síťových zařízení, řešení síťových úloh a praktickému procvičování v Cisco Packet Traceru i virtuálních laboratořích.</p>
-</article>
+          <article class="card card-project">
+            <picture>
+              <source srcset="assets/img/body/ccna.png" type="image/webp">
+              <img src="assets/img/body/ccna.png"
+                   alt="[ccna_photo_from_school]"
+                   class="project-photo" width="1200" height="675" loading="lazy">
+            </picture>
+            <h3>Cisco Networking Academy</h3>
+            <span class="tag">Odborné certifikace CCNA</span>
+            <p>Studentům nabízíme možnost rozvíjet své znalosti počítačových sítí prostřednictvím kurzů Cisco Networking Academy. Věnují se konfiguraci síťových zařízení, řešení síťových úloh a praktickému procvičování v Cisco Packet Traceru i virtuálních laboratořích.</p>
+          </article>
 
-</div>
-</div>
-</section>
+        </div>
+      </div>
+    </section>
 
-    <!-- MOŽNOSTI UPLATNĚNÍ -->
+    <!-- 4. vyska/prace ... -->
     <section id="uplatneni" class="section">
       <div class="container">
         <h2>Kam tě obor může posunout</h2>
@@ -208,7 +225,7 @@
 
   </main>
 
-<!-- PRE-FOOTER: ZÁJEM O STUDIUM A KONTAKT -->
+  <!-- 5. kontakty -->
   <section id="kontakt" class="prefooter" aria-labelledby="kontakt-nadpis">
     <div class="container prefooter-inner">
       <div>
@@ -291,5 +308,8 @@
       </div>
     </div>
   </footer>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
 </body>
 </html>

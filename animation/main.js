@@ -1,4 +1,3 @@
-// Аккордеон "Co se naučíš": otevřená je vždy jen jedna karta
 const accItems = document.querySelectorAll('.acc-item');
 
 function setOpen(item, open) {
@@ -10,7 +9,6 @@ function setOpen(item, open) {
     trigger.setAttribute('aria-expanded', String(open));
   }
   
-  // otevřená karta dostane přesnou výšku textu, zavřená se vrátí na 2 řádky z CSS
   if (wrap) {
     wrap.style.maxHeight = open ? wrap.scrollHeight + 'px' : '';
   }
@@ -24,14 +22,12 @@ accItems.forEach(item => {
   });
 });
 
-// po změně velikosti okna přepočítat výšku otevřené karty
 window.addEventListener('resize', () => {
   accItems.forEach(item => {
     if (item.classList.contains('open')) setOpen(item, true);
   });
 });
 
-// Mobilní menu: otevření / zavření tlačítkem
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.main-nav');
 
@@ -41,16 +37,22 @@ if (toggle && nav) {
     toggle.setAttribute('aria-expanded', String(open));
   });
 
-  // Po kliknutí na odkaz v menu se menu zavře
   nav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       nav.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
     });
   });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    }
+  });
 }
 
-// Zvýraznění odkazu v menu podle sekce, ve které se právě nacházíš
 const links = document.querySelectorAll('.main-nav a');
 const sections = [...links]
   .map(a => {
